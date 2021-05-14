@@ -1,0 +1,56 @@
+﻿@model List<MVC_NHL.Models.ORM.Entities.Concrete.Team>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="content " style="background-image: url('/images/ice.jpg');">
+    <div class="container">
+        <div class="col-sm-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h4 class="card-title"> List Of NHL Teams </h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Team Name</th>
+                                <th>Description</th>
+                                <th>Team Status</th>
+                                <th>Create Date</th>
+                                <th>Update Team</th>
+                                <th>Delete Team</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.TeamName</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.Status</td>
+                                    <td>@item.CreateDate.ToShortDateString()</td>
+                                    <td>
+                                        <a href="/Team/Update/@item.Id" class="btn btn-sm btn-warning">Update</a>
+                                    </td>
+                                    <td>
+                                        <a href="/Team/Delete/@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <a href="/Team/Create" class="btn btn-block btn-success"> Create Team</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
